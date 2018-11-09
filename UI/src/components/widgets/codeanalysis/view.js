@@ -31,6 +31,7 @@
         };
 
         ctrl.showLibraryPolicyDetails = showLibraryPolicyDetails;
+        ctrl.showSecurityDetails = showSecurityDetails;
 
         coveragePieChart({});
 
@@ -329,6 +330,20 @@
                     size: 'lg',
                     resolve: {
                         libraryPolicyResult: function () {
+                            return ({type: type,data: data});
+                        }
+                    }
+                });
+            }
+
+            function showSecurityDetails(type,data) {
+                $uibModal.open({
+                    controller: 'SecurityDetailsController',
+                    controllerAs: 'securityDetails',
+                    templateUrl: 'components/widgets/codeanalysis/securitydetails.html',
+                    size: 'lg',
+                    resolve: {
+                        securityResult: function () {
                             return ({type: type,data: data});
                         }
                     }
