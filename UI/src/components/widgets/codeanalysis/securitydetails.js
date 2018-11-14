@@ -3,15 +3,15 @@
 
     angular
         .module(HygieiaConfig.module)
-        .controller('LibraryPolicyDetailsController', LibraryPolicyDetailsController);
+        .controller('SecurityDetailsController', SecurityDetailsController);
 
-    LibraryPolicyDetailsController.$inject = ['$scope', '$uibModalInstance', 'libraryPolicyResult'];
-    function LibraryPolicyDetailsController($scope, $uibModalInstance, libraryPolicyResult) {
+    SecurityDetailsController.$inject = ['$scope', '$uibModalInstance', 'SecurityResult'];
+    function SecurityDetailsController($scope, $uibModalInstance, SecurityDetailsResult) {
         /*jshint validthis:true */
         var ctrl = this;
-        ctrl.type = libraryPolicyResult.type;
+        ctrl.type = SecurityResult.type;
 
-        ctrl.libraryPolicyResult = libraryPolicyResult.data;
+        ctrl.SecurityResult = SecurityDetailsResult.data;
         ctrl.close = close;
 
         function close() {
@@ -21,53 +21,20 @@
 
         $scope.getDashStatus = function getDashStatus(level) {
             switch (level.toLowerCase()) {
+                case 'blocker':
+                    return 'blocker';
+
                 case 'critical':
                     return 'critical';
 
-                case 'high':
-                    return 'alert';
-
-                case 'medium':
-                    return 'warning';
-
-                case 'low' :
-                    return 'ignore';
-
-                default:
-                    return 'ok';
+                case 'major':
+                    return 'major';
             }
-        };
-
-        ctrl.getLevelCount = function getLevelCount(level) {
-            var threats;
-            if (!ctrl.libraryPolicyResult || !ctrl.libraryPolicyResult.threats) return (0);
-            if (ctrl.type.toLowerCase() === 'license') {
-                threats = ctrl.libraryPolicyResult.threats.License;
-            } else {
-                threats = ctrl.libraryPolicyResult.threats.Security;
-            }
-            for (var i = 0; i < threats.length; ++i) {
-                if (threats[i].level.toLowerCase() === level.toLowerCase()) {
-                    return threats[i].count;
-                }
-            }
-            return (0);
         };
 
         ctrl.getDetails = function getDetails(level) {
-            var threats;
-            if (!ctrl.libraryPolicyResult || !ctrl.libraryPolicyResult.threats) return ([]);
-            if (ctrl.type.toLowerCase() === 'license') {
-                threats = ctrl.libraryPolicyResult.threats.License;
-            } else {
-                threats = ctrl.libraryPolicyResult.threats.Security;
-            }
-            for (var i = 0; i < threats.length; ++i) {
-                if (threats[i].level.toLowerCase() === level.toLowerCase()) {
-                    return threats[i].components;
-                }
-            }
-            return ([]);
+
+            return 0;
         }
     }
 
