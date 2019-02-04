@@ -346,6 +346,20 @@
                 }
             });
         }
+
+        function showSecurityDetails() {
+            $uibModal.open({
+                controller: 'SecurityDetailsController',
+                controllerAs: 'securityDetails',
+                templateUrl: 'components/widgets/codeanalysis/securitydetails.html',
+                size: 'lg',
+                resolve: {
+                    securityResult: function () {
+                        return ();
+                    }
+                }
+            });
+        }
     }
 })
 ();
