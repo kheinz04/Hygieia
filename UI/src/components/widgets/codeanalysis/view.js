@@ -32,6 +32,7 @@
         };
 
         ctrl.showLibraryPolicyDetails = showLibraryPolicyDetails;
+        ctrl.showSecurityDetails = showSecurityDetails;
 
         coveragePieChart({});
 
@@ -355,7 +356,7 @@
                 size: 'lg',
                 resolve: {
                     securityResult: function () {
-                        return ();
+                        return ({});
                     }
                 }
             });

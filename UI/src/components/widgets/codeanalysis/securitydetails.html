@@ -3,13 +3,13 @@
         <div class="widget-detail-heading">
             <div class="row">
                 <div class="col-md-4 build-time">
-                    <span>{{libraryPolicyDetails.type}} Policy Violations</span>
+                    <span>{{}} Policy Violations</span>
                 </div>
                 <div class="col-md-4 build-time">
-                    <span>Report Date: {{libraryPolicyDetails.libraryPolicyResult.timestamp | date:'MMM d, HH:mm:ss'}}</span>
+                    <span>Report Date: {{}}</span>
                 </div>
                 <div class="col-md-3 view-in-tool pull-right">
-                    <a ng-href="{{::libraryPolicyDetails.libraryPolicyResult.reportUrl}}" target="_blank">
+                    <a ng-href="{{}}" target="_blank">
                         View Report <span class="fa fa-angle-right"></span>
                     </a>
                 </div>
@@ -22,15 +22,10 @@
             <div class="dash-row" data-ng-init="levels=['Critical','High','Medium','Low']">
                 <div ng-repeat="level in levels">
                     <span class="pull-left widget-font-bold widget-heading"></span>
-                    <span class="pull-left widget-font-bold">{{level}} (Total Count: {{libraryPolicyDetails.getLevelCount(level)}})</span>
+                    <span class="pull-left widget-font-bold">{{level}} (Total Count: {{}})</span>
                     <table class="table">
-                        <tbody ng-repeat="component in libraryPolicyDetails.getDetails(level)" ng-class-odd="'alt'">
-                        <tr id="component">
-                            <td><span dash-status="{{getDashStatus(level)}}"></span></td>
-                            <td>{{component}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                    </table>s
                 </div>
             </div>
         </div>
